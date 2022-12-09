@@ -35,17 +35,17 @@ def test_rand() -> None:
     """
     Verifies random works to expected distribution and also returns bool on edge cases
     """
-    assert round([rand([True * x], [False * x], x) for x in range(1000)].count(True)/1000, 1) == 0.5 # tests if matches distribution up to length/round 1000, also tests 0th edge case
+    assert round([rand([True]*x, [False]*x, x) for x in range(1000)].count(True)/1000, 1) == 0.5 # tests if matches distribution up to length/round 1000, also tests 0th edge case
 
 def test_kindaRandom() -> None:
-    assert round([kindaRandom([True * x], [False * x], x) for x in range(1000)].count(True)/1000, 1) == 0.9 # tests if matches distribution up to length/round 1000, also tests 0th edge case
+    assert round([kindaRandom([True]*x, [False]*x, x) for x in range(1000)].count(True)/1000, 1) == 0.9 # tests if matches distribution up to length/round 1000, also tests 0th edge case
 
 def test_titFortat() -> None:
     assert titFortat([], [], 0) == False # tests 0th case
 
     assert titFortat([False], [True], 1) == True # tests basic case
 
-    assert titFortat([False*100], [False * 99, True], 100) == True # tests more complicated case
+    assert titFortat([False]*100, [False]*99 + [True], 100) == True # tests more complicated case
 
 def test_titForTwotats() -> None:
     assert titForTwotats([], [], 0) == False # tests 0th case
@@ -53,7 +53,7 @@ def test_titForTwotats() -> None:
     assert titForTwotats([False], [True], 1) == False # tests basic case that should not trigger
     assert titForTwotats([False, False], [True, True], 1) == True # tests basic case that should trigger
 
-    assert titForTwotats([False*100], [False * 98, True, True], 100) == True # tests more complicated case
+    assert titForTwotats([False]*100, [False]*98 + [True, True], 100) == True # tests more complicated case
 
 def test_nukeFortat() -> None:
     assert nukeFortat([], [], 0) == False # tests 0th case
@@ -61,8 +61,8 @@ def test_nukeFortat() -> None:
     assert nukeFortat([False], [False], 1) == False # tests basic case that should not trigger
     assert nukeFortat([False], [True], 1) == True # tests basic cast that should trigger
 
-    assert nukeFortat([False, True*99], [True, False*99], 100) == True # tests more complicated case that should trigger
-    assert nukeFortat([False * 100], [False * 100], 100) == False # tests more complicated case that should not trigger
+    assert nukeFortat([False] + [True]*99, [True] + [False]*99, 100) == True # tests more complicated case that should trigger
+    assert nukeFortat([False]*100, [False]*100, 100) == False # tests more complicated case that should not trigger
 
 def test_nukeForTwotats() -> None:
     assert nukeForTwotats([], [], 0) == False # tests 0th case
@@ -70,8 +70,8 @@ def test_nukeForTwotats() -> None:
     assert nukeForTwotats([False, False], [False, True], 2) == False # tests basic case that should not trigger
     assert nukeForTwotats([False, False], [True, True], 2) == True # tests basic cast that should trigger
 
-    assert nukeForTwotats([False, True*99], [True, True, False*98], 100) == True # tests more complicated case that should trigger
-    assert nukeForTwotats([False] * 100, [True, False]*50, 100) == False # tests more complicated case that should not trigger
+    assert nukeForTwotats([False] + [True]*99, [True, True] + [False]*98, 100) == True # tests more complicated case that should trigger
+    assert nukeForTwotats([False]*100, [True, False]*50, 100) == False # tests more complicated case that should not trigger
 
 
 
