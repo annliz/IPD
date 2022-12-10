@@ -12,10 +12,10 @@ Usable interface for running and testing code for the Iterated Prisoner's Dilemm
 2. **Get spreadsheet API key.** For security reasons, the API key is not included in the Github repository. *You need this key to run the code*. Contact Annli for the key. Then, download this file and move it into the folder `ipd_local`. Make sure it is still named `service_account.json`.
 
 3. **Install poetry.** This project uses the Python dependency manager `poetry`, which you can install with:
-```
-curl -sSL https://install.python-poetry.org | python3 -
-export PATH=$PATH:~/.local/bin
-```
+    ```
+    pip3 install poetry
+    export PATH=$PATH:~/.local/bin
+    ```
 
 4. **Get access to submission and results spreadsheets.** This is where students submit their code, and where result are logged. Ask Annli for access to the Google sheets.
 
@@ -26,20 +26,20 @@ export PATH=$PATH:~/.local/bin
 2. **Specify game parameters.** Edit the file `game_specs.py` to change game parameters such as noise level and score matrix.
 
 3. **Run the game.** Run the actual simulation:
-```bash
-poetry shell # to enter the environment
-python3 main.py
-```
+    ```bash
+    poetry shell # to enter the environment
+    python3 main.py
+    ```
 
 4. **View results.** View the results of the game at the results spreadsheet that has been shared with you. This sheet only saves the results of the latest run, so if you want to save these results permanently, create a copy.
 
-5. **Read error log.** All submissions that had issues of any sort are logged in `problems.txt`. Make sure to read this file and notify students of their issues so they can fix their code.
+5. **Read error log.** All submissions that had issues of any sort are logged in `ipd.log`. Make sure to read this file and notify students of their issues so they can fix their code.
 
 # Future Features
 
 The current version of this product allows the user to run the IPD, with minimal extra work. However, there is a lack of other features that would make the product more comfortable to use. The following are some features that may be helpful.
 
-1. **Input/output UI.** Currently, the user specifies game parameters by editing a small python file, `game_specs.py`, and all problems are logged simply to a text file, `problems.txt`. This is functional but slightly scuffed. A simple UI could make this process more streamlined.
+1. **Input/output UI.** Currently, the user specifies game parameters by editing a small python file, `game_specs.py`, and all problems are logged simply to a file, `ipd.log`. This is functional but slightly scuffed. A simple UI could make this process more streamlined.
 
 2. **Specific search.** The results of the latest game are stored locally in `latest_raw_out.json`, including the series of plays for each matchup. These moves are omitted when the scores are logged onto the spreadsheet, for volume reasons. However, it may potentially be of interest to view the results of a specific matchup, for which a simple searching function may be helpful.
 
