@@ -15,6 +15,10 @@ import gspread_dataframe
 import pandas as pd
 from . import *
 
+# these tests test the function on a pre-loaded set of results
+# located specifically in the tests folder
+# hence the specific values for scores
+
 def test_get_pairwise() -> None:
     assert str(get_pairwise().to_dict()) == str({'rat': {'silent': [531.0, 0.0], 'titFortat': [113.88, 52.14], 'rat': float("nan")}, 'silent': {'silent': float("nan"), 'titFortat': [265.8, 318.36], 'rat': [0.0, 531.0]}, 'titFortat': {'silent': [318.36, 265.8], 'titFortat': float("nan"), 'rat': [52.14, 113.88]}}) # converts to string because NaN comparison returns false... not scuffed
     
