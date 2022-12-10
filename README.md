@@ -60,11 +60,13 @@ All the tests for the simulation are located in the `tests` subfolder. Integrati
 
 To run a specific test, navigate to the `tests` folder and run the following command:
 ```bash
-python3 -m pytest TESTFILENAME
+poetry shell
+pytest TESTFILENAME
 ```
 To run all tests, run:
 ```bash
-python3 -m pytest
+poetry shell
+pytest
 ```
 
 # Future Features and Bugs
